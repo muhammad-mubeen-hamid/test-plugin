@@ -64,12 +64,12 @@ jobs:
 
       - name: Sync Files to SVN
         run: |
-          rsync -av --delete ./trunk/ ikhokha-payment-gateway/trunk/
-          rsync -av --delete ./assets/ ikhokha-payment-gateway/assets/
-          rsync -av --delete "tags/${{ env.VERSION }}/" "ikhokha-payment-gateway/tags/${{ env.VERSION }}/"
+          rsync -av --delete ./trunk/ test-mubeen-plu/trunk/
+          rsync -av --delete ./assets/ test-mubeen-plu/assets/
+          rsync -av --delete "tags/${{ env.VERSION }}/" "test-mubeen-plu/tags/${{ env.VERSION }}/"
 
       - name: Add and Commit to SVN
         run: |
-          cd ikhokha-payment-gateway
+          cd test-mubeen-plu
           svn add --force * --auto-props --parents --depth infinity -q
           svn commit -m "Deploy version v${{ env.VERSION }} from Git commit $GITHUB_SHA" --username "mubeen132344" --password "19961581aA!" --no-auth-cache --non-interactive
